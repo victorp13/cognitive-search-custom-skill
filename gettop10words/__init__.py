@@ -55,12 +55,12 @@ def get_top_ten_words(text):
 def main(req: func.HttpRequest) -> func.HttpResponse:
     payload = req.get_json()
 
-    
     if payload:
         logging.info(payload)
 
         return func.HttpResponse(
             json.dumps(get_top_ten_words(payload["values"][0]["data"]["name"])),
+
             mimetype="application/json")
     else:
         return func.HttpResponse(
